@@ -36,5 +36,31 @@ Move(3, 1, 3, 2, "X").apply(board)
 for row in board:
     print(" ".join(row))
 
-def get_user_move(board) :
-    #Hi
+
+def user_move(board, move):
+    first_cell = (a1, a1)
+    second_cell = (a2, b2)
+
+    (
+        move(a1, ba, a2, b2, fiest_symbol) if board[a1][b1] == "-" else print("erorr")
+    )  # need try - except
+
+
+def is_valid_move(board, move):
+
+    r1, c1 = move.a1, move.b1
+    r2, c2 = move.a2, move.b2
+
+    # 1. داخل صفحه بودن
+    if not (0 <= r1 < 4 and 0 <= c1 < 4 and 0 <= r2 < 4 and 0 <= c2 < 4):
+        return False
+
+    # 2. خالی بودن خانه‌ها
+    if board[r1][c1] != "-" or board[r2][c2] != "-":
+        return False
+
+    # 3. مجاور بودن (فقط افقی یا عمودی)
+    if abs(r1 - r2) + abs(c1 - c2) != 1:
+        return False
+
+    return True
